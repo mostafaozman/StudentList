@@ -24,17 +24,36 @@ int main()
   if (input[0] == 'A' && input[1] == 'D' && input[2] == 'D')
     {
       cout << "Add function" << endl;
+
+      Student aStudent;
+      Student *pstudent;
+      pstudent = &aStudent;
+
+      cout << "Please enter the sudents first name: "  << endl;
+      cin.get (pstudent->FirstName);
+      cout << "Please enter the students last name: " << endl; 
+      cin.get (pstudent->LastName); 
+
+      cout << "\nYou entered:\n" << endl; 
+      cout << pstudent->FirstName; 
+      cout << pstudent->LastName; 
+      
+      
    }
   
   if (input[0] == 'P' && input[1] == 'R' && input[2] == 'I')
     {
-      cout << "Print Function";
+      /* cout << "Print Function";
       cout << "Please enter the first name." << endl;
       cin >> Mo.FirstName;
       cout << "Enter the last name." << endl;
       cin >> Mo.LastName;
       cout << Mo.FirstName << Mo.LastName <<  ", " << Mo.id << ", ";
-      cout << Mo.gpa << endl; 
+      cout << Mo.gpa << endl;
+      */ 
+      
+      
+      
     }
 
   if (input[0] == 'D' && input[1] == 'E' && input[2] == 'L')
