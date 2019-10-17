@@ -3,6 +3,7 @@
 #include <iomanip>
 #include <iterator>
 #include <vector> 
+#include <string.h>
 
 using namespace std; 
 
@@ -14,23 +15,33 @@ struct Student
   float gpa; 
 };
 
+int i = 1;
+
+void Print(vector<Student*> pstudent); 
+Student* Add();  
+
 int main()
 {
-  char input[3]; 
+  char input[7]; 
   Student Mo; 
   //gpa.setprecision(1);  
   // Mo.id = 403569; 
   // Mo.gpa = 4.5; 
   
-  cout << "Would you like to ADD, PRINT, or DELETE?" << endl;  
-  cin >> input;
-  if (input[0] == 'A' && input[1] == 'D' && input[2] == 'D')
-    {
-      cout << "Add function" << endl;
+  vector<Student*> pstudent; 
 
-      Student aStudent;
-      Student *pstudent;
-      pstudent = &aStudent;
+  while (int i = 1)
+    {
+      cout << "Would you like to ADD, PRINT, or DELETE?" << endl;
+      cin >> input;
+  if (strcmp(input, "ADD") == 0)
+    { 
+      cout << "Add function" << endl;
+      
+      // Student aStudent;
+      // Student *pstudent;
+      // pstudent = &aStudent;
+      /*Student* pstudent = new Student(); 
 
       cout << "Please enter the students first name: "  << endl;
       cin >> pstudent->FirstName;
@@ -46,27 +57,74 @@ int main()
       cout << pstudent -> LastName << "\n";
       cout << "ID: " << pstudent -> id << "\n"; 
       cout << "GPA: " << fixed << setprecision(2) << pstudent -> gpa << "\n"; 
-      
+      */
+
+      Add(pstudent); 
       
    }
   
-  if (input[0] == 'P' && input[1] == 'R' && input[2] == 'I')
+  if (strcmp(input, "PRINT") == 0)
     {
+      /*
       cout << "Print Function";
       
-      
-      
+      vector<Student*>::iterator ptr;
+
+      for (ptr = pstudent.begin(); ptr < pstudent.end(); ++ptr)
+	{
+	  cout << (*ptr) -> FirstName << "n " << (*ptr) -> LastName << ", " << (*ptr) <<
+	    (*ptr) -> id << " " << (*ptr) -> gpa << endl; 
+	    }*/
+      pstudent.push_back(Add()); 
     }
 
-  if (input[0] == 'D' && input[1] == 'E' && input[2] == 'L')
+  if (strcmp(input, "DELETE") == 0)
     {
       cout << "Delete Funtion";
     }
 
-  else
+  else if ((!(strcmp(input, "ADD") == 0)) || (!(strcmp(input, "PRINT") == 0)) || (!(strcmp(input, "DELETE") == 0)))
     {
-      cout << "Please enter a vaild command it is case sensitive"<< endl; 
+      cout << "\nPlease enter a vaild command it is case sensitive"<< endl; 
+    }
     }
 
   return 0; 
+}
+
+
+void Print(vector<Student*> pstudent)
+{
+  cout << "Print Function";
+
+  vector<Student*>::iterator ptr;
+
+  for (ptr = pstudent.begin(); ptr !=  pstudent.end(); ++ptr)
+    {
+      cout << (*ptr) -> FirstName << " " << (*ptr) -> LastName << ", " << (*ptr) <<
+	(*ptr) -> id << " " << (*ptr) -> gpa << endl;
+    }
+  cin.ignore(1000000, '\n'); 
+}
+
+Student* Add()
+{
+  Student* pstudent = new Student();
+
+  cout << "Please enter the students first name: "  << endl;
+  cin >> pstudent->FirstName;
+  cout << "Please enter the students last name: " << endl;
+  cin >> pstudent->LastName;
+  cout << "Please enter the students ID: " << endl;
+  cin >> pstudent->id;
+  cout << "Please enter the students GPA:" << endl;
+  cin >> pstudent->gpa;
+
+  cout << "\nYou entered:" << endl;
+  cout << pstudent -> FirstName << "\n";
+  cout << pstudent -> LastName << "\n";
+  cout << "ID: " << pstudent -> id << "\n";
+  cout << "GPA: " << fixed << setprecision(2) << pstudent -> gpa << "\n";
+  
+  return pstudent; 
 }
