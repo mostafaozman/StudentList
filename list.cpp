@@ -15,19 +15,15 @@ struct Student
   float gpa; 
 };
 
-int i = 1;
-
 void Print(vector<Student*> pstudent); 
-Student* Add();  
+Student* ADD();
+void Delete(vector<Student*>* pstudent, int deleteid);    
 
 int main()
 {
   char input[7]; 
   Student Mo; 
-  //gpa.setprecision(1);  
-  // Mo.id = 403569; 
-  // Mo.gpa = 4.5; 
-  
+  int i = 1; 
   vector<Student*> pstudent; 
 
   while (int i = 1)
@@ -37,45 +33,12 @@ int main()
   if (strcmp(input, "ADD") == 0)
     { 
       cout << "Add function" << endl;
-      
-      // Student aStudent;
-      // Student *pstudent;
-      // pstudent = &aStudent;
-      /*Student* pstudent = new Student(); 
-
-      cout << "Please enter the students first name: "  << endl;
-      cin >> pstudent->FirstName;
-      cout << "Please enter the students last name: " << endl; 
-      cin >> pstudent->LastName;
-      cout << "Please enter the students ID: " << endl; 
-      cin >> pstudent->id; 
-      cout << "Please enter the students GPA:" << endl;
-      cin >> pstudent->gpa;  
-
-      cout << "\nYou entered:" << endl; 
-      cout << pstudent -> FirstName << "\n"; 
-      cout << pstudent -> LastName << "\n";
-      cout << "ID: " << pstudent -> id << "\n"; 
-      cout << "GPA: " << fixed << setprecision(2) << pstudent -> gpa << "\n"; 
-      */
-
-      Add(pstudent); 
-      
+      pstudent.push_back(ADD());
    }
   
   if (strcmp(input, "PRINT") == 0)
     {
-      /*
-      cout << "Print Function";
-      
-      vector<Student*>::iterator ptr;
-
-      for (ptr = pstudent.begin(); ptr < pstudent.end(); ++ptr)
-	{
-	  cout << (*ptr) -> FirstName << "n " << (*ptr) -> LastName << ", " << (*ptr) <<
-	    (*ptr) -> id << " " << (*ptr) -> gpa << endl; 
-	    }*/
-      pstudent.push_back(Add()); 
+      Print(pstudent); 
     }
 
   if (strcmp(input, "DELETE") == 0)
@@ -92,39 +55,47 @@ int main()
   return 0; 
 }
 
-
 void Print(vector<Student*> pstudent)
 {
-  cout << "Print Function";
+  cout << "Print Function\n";
 
   vector<Student*>::iterator ptr;
 
-  for (ptr = pstudent.begin(); ptr !=  pstudent.end(); ++ptr)
+  for (ptr = pstudent.begin(); ptr <  pstudent.end(); ++ptr)
     {
-      cout << (*ptr) -> FirstName << " " << (*ptr) -> LastName << ", " << (*ptr) <<
-	(*ptr) -> id << " " << (*ptr) -> gpa << endl;
+      cout << (*ptr) -> FirstName << " " << (*ptr) -> LastName << ", " <<
+	(*ptr) -> id << ", " << fixed << setprecision(2)<< (*ptr) -> gpa << endl;
     }
   cin.ignore(1000000, '\n'); 
 }
 
-Student* Add()
+Student* ADD()
 {
-  Student* pstudent = new Student();
+  Student* pupil = new Student();
 
-  cout << "Please enter the students first name: "  << endl;
-  cin >> pstudent->FirstName;
-  cout << "Please enter the students last name: " << endl;
-  cin >> pstudent->LastName;
-  cout << "Please enter the students ID: " << endl;
-  cin >> pstudent->id;
-  cout << "Please enter the students GPA:" << endl;
-  cin >> pstudent->gpa;
+  cout << "Please enter the students first name: \n"  << endl;
+  cin >> pupil->FirstName;
+  cout << "Please enter the students last name: \n" << endl;
+  cin >> pupil->LastName;
+  cout << "Please enter the students ID: \n" << endl;
+  cin >> pupil->id;
+  cout << "Please enter the students GPA: \n" << endl;
+  cin >> pupil->gpa;
 
-  cout << "\nYou entered:" << endl;
+  /* cout << "\nYou entered:" << endl;
   cout << pstudent -> FirstName << "\n";
   cout << pstudent -> LastName << "\n";
   cout << "ID: " << pstudent -> id << "\n";
   cout << "GPA: " << fixed << setprecision(2) << pstudent -> gpa << "\n";
-  
-  return pstudent; 
+  */
+  return pupil; 
+}
+
+void Delete (vector<Student*>* pstudent, int deleteid)
+{
+  vector<Student*>::iterator a; 
+  for (a = pstudent -> begin(); a != pstudent -> end(); ++a)
+    {
+
+    }
 }
